@@ -34,8 +34,8 @@ Route::get('/parameter/dashboard', [DashboardController::class, 'parameter'])->n
 
 
 //crud admin
-Route::get('pengguna/dashboard', [UserController::class, 'index'])->name('pengguna.dashboard');
-Route::get('pengguna/show/{id}', [UserController::class, 'show'])->name('pengguna.show');
+Route::get('/pengguna/dashboard', [UserController::class, 'index'])->name('pengguna.dashboard');
+Route::get('/pengguna/show/{id}', [UserController::class, 'show'])->name('pengguna.show');
 Route::get('/pengguna/create', [UserController::class, 'create'])->name('pengguna.create');
 Route::post('/pengguna/store', [UserController::class, 'store'])->name('pengguna.store');
 Route::get('/pengguna/edit/{id}', [UserController::class, 'edit'])->name('pengguna.edit');

@@ -36,26 +36,29 @@ class UserController extends Controller
     {
         // Validate the incoming request
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'noTelp' => 'required|string|max:15',
-            'jenisKelamin' => 'required|string|max:10',
-            'fotoProfil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nama' => 'required|string',
+            'username' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'noTelp' => 'required|string',
+            'jenisKelamin' => 'required|string',
+            'fotoProfil' => 'nullable|image'
         ]);
 
+        
         // Handle file upload for the photo
         if ($request->hasFile('fotoProfil')) {
             $path = $request->file('fotoProfil')->store('profile_photos', 'public');
             $validated['fotoProfil'] = $path;
-        }
+        } else {
+            $validated['fotoProfil'] = 'default.jpg'; // Nilai default
+        }        
 
         // Create a new user with the validated data
         User::create($validated);
 
         // Redirect to the user list page
-        return redirect()->route('components.pengguna.dashboard')->with('success', 'User created successfully.');
+        return redirect()->route('pengguna.dashboard')->with('success', 'User created successfully.');
     }
 
     /**
@@ -89,12 +92,13 @@ class UserController extends Controller
     {
         // Validasi data
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username,' . $id,
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'noTelp' => 'required|string|max:15',
-            'jenisKelamin' => 'required|string|max:10',
-            'fotoProfil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nama' => 'required|string',
+            'username' => 'required|string' . $id,
+            'email' => 'required|string' . $id,
+            'password' => 'required|string',
+            'noTelp' => 'required|string',
+            'jenisKelamin' => 'required|string',
+            'fotoProfil' => 'nullable|image'
         ]);
 
         // Cari pengguna berdasarkan ID
@@ -103,11 +107,12 @@ class UserController extends Controller
         // Update data pengguna
         $user->update($validated);
 
-        // Proses upload foto jika ada
+        // Handle file upload for the photo
         if ($request->hasFile('fotoProfil')) {
             $path = $request->file('fotoProfil')->store('profile_photos', 'public');
-            $user->fotoProfil = $path;
-            $user->save();
+            $validated['fotoProfil'] = $path;
+        } else {
+            $validated['fotoProfil'] = 'default.jpg'; // Nilai default
         }
 
         // Redirect ke dashboard pengguna setelah update
@@ -127,6 +132,6 @@ class UserController extends Controller
         $user->delete();
 
         // Redirect to the user list page
-        return redirect()->route('components.pengguna.dashboard')->with('success', 'User deleted successfully.');
+        return redirect()->route('pengguna.dashboard')->with('success', 'User deleted successfully.');
     }
 }

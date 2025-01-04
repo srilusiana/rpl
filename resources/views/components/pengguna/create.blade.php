@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label for="id" class="col-sm-3 col-form-label">ID</label>
                             <div class="col-sm-9">
-                                <input type="text" name="id" id="id" class="form-control" placeholder="Masukkan ID pengguna" required>
+                                <input type="int" name="id" id="id" class="form-control" placeholder="Masukkan ID pengguna" required>
                             </div>
                         </div>
 
@@ -86,9 +86,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="no_telp" class="col-sm-3 col-form-label">No Telepon</label>
+                            <label for="noTelp" class="col-sm-3 col-form-label">No Telepon</label>
                             <div class="col-sm-9">
-                                <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="Masukkan nomor telepon pengguna">
+                                <input type="text" name="noTelp" id="noTelp" class="form-control" placeholder="Masukkan nomor telepon pengguna">
                             </div>
                         </div>
 
@@ -130,12 +130,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-9 offset-sm-3">
-                                <button type="submit" class="btn btn-info btn-sm">Simpan</button>
-                                <button class="btn btn-danger btn-sm" onclick="window.history.back()">Batal</button>
-                            </div>
-                        </div>
+                    <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-info btn-sm">Tambah</button>
+                    <button class="btn btn-danger btn-sm" onclick="window.history.back()">Batal</button>
+                    </div>
                     </form>
                 </div>
                 <!-- /.card-body -->

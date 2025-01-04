@@ -130,13 +130,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-9 offset-sm-3">
-                                <button type="submit" class="btn btn-info btn-sm">Update</button>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="window.history.back()">Batal</button>
-                            </div>
-                        </div>
-
+                    <div class="col-sm-9 offset-sm-3">
+                    <button type="submit" class="btn btn-info btn-sm">Update</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="window.history.back()">Batal</button>
+                    </div>
                     </form>
                 </div>
             </div>
